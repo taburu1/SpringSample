@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -25,6 +26,7 @@ public class PostsRepositoryTest extends TestCase {
 
     @Test
     public void savePostAndFind() {
+        LocalDateTime now = LocalDateTime.of(2022, 12, 21, 0, 0, 0);
         // given
         String title = "테스트 게시글";
         String content = "테스트 내용";
@@ -42,5 +44,11 @@ public class PostsRepositoryTest extends TestCase {
         Posts posts = postsList.get(0);
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
+
+        System.out.println("createDate:" + posts.getCreatedDate()
+                + ", modifiedDate:" + posts.getModifiedDate());
+        assertThat(posts.getCreatedDate()).isAfter(now);
+        assertThat(posts.getCreatedDate()).isAfter(now);
+
     }
 }

@@ -52,4 +52,10 @@ public class PostsService {
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public void delete(Long id) {
+        Posts posts = postsRepository.findById(id).orElseThrow(() -> new RuntimeException("게시글없음:" + id));
+        postsRepository.delete(posts);
+    }
 }

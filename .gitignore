@@ -169,4 +169,4 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java,gradle
 
-#application-oauth.yml
+application-oauth.yml

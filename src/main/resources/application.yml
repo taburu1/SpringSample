@@ -13,5 +13,9 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         format_sql: true
         show_sql: true
-  profile:
+  profiles:
     include: oauth
+logging:
+  level:
+    root: info
+    com.sample.springboot: debug
